@@ -5,7 +5,7 @@ import { Home } from './components/Home/Home';
 import axios from "axios"
 import { useEffect, useState } from 'react';
 
-const backendURL = "http://emptycupbackend-env.eba-mb7wxky5.ap-south-1.elasticbeanstalk.com"
+const backendURL = "https://backendemptycup-production.up.railway.app/api/v1/users"
 
 function App() {
 

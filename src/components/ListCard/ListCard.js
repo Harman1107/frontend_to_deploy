@@ -8,7 +8,7 @@ import axios from "axios"
 export const ListCard = ({details, colorIdx, sorted, mainData, setMainData}) => {
     let bgColor = colorIdx%2 ? "#FFFFFF" : "#FFFCF2";
     const [shortlisted, setShortlisted] = useState(details?.shorlisted);
-    const backendURL = "http://emptycupbackend-env.eba-mb7wxky5.ap-south-1.elasticbeanstalk.com"
+    const backendURL = "https://backendemptycup-production.up.railway.app/api/v1/users"
 
     const handleClick = async () => {
         details.shortlisted = !details.shortlisted
