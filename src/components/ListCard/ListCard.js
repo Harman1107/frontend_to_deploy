@@ -3,6 +3,8 @@ import ReactStars from "react-rating-stars-component";
 import { Rating } from "./Rating";
 import { Arrow90degRight, ArrowRight, ArrowRightShort, BookmarkHeart, BookmarkHeartFill, ExclamationCircle, EyeSlash, Star, StarFill, StarHalf } from "react-bootstrap-icons";
 import { useState } from "react";
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import axios from "axios"
 
 export const ListCard = ({details, colorIdx, sorted, mainData, setMainData}) => {
@@ -12,7 +14,11 @@ export const ListCard = ({details, colorIdx, sorted, mainData, setMainData}) => 
 
     const handleClick = async () => {
         details.shortlisted = !details.shortlisted
-        axios.put(`${backendURL}/api/v1/users/toggleShortList/${details._id}`);
+        axios.put(`${backendURL}/api/v1/users/toggleShortList/${details._id}`).catch((err) => {
+            NotificationManager.error(`${err}`);
+            details.shortlisted = !details.shortlisted;
+            setShortlisted(details.shortlisted);
+        });
         setShortlisted(details.shortlisted)
         if(sorted){
             const newFilteredData = []
